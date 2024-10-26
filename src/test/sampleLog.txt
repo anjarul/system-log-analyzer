@@ -1,0 +1,20 @@
+Oct 26 08:14:22 server01 systemd[1]: Started System Logging Service.
+Oct 26 08:14:23 server01 NetworkManager[892]: <info>  [1698315263.4521] NetworkManager (version 1.40.0) is starting...
+Oct 26 08:14:23 server01 NetworkManager[892]: <info>  [1698315263.4522] Read config: /etc/NetworkManager/NetworkManager.conf
+Oct 26 08:14:24 server01 dhclient[934]: DHCPREQUEST on eth0 to 192.168.1.1 port 67
+Oct 26 08:14:24 server01 dhclient[934]: DHCPACK from 192.168.1.1
+Oct 26 08:14:24 server01 NetworkManager[892]: <info>  [1698315264.2234] device (eth0): state change: ip-config -> ip-check (reason 'none', sys-iface-state: 'managed')
+Oct 26 08:14:25 server01 kernel: [    0.000000] Linux version 5.15.0-89-generic (buildd@lcy02-amd64-080)
+Oct 26 08:14:26 server01 sshd[1024]: Server listening on 0.0.0.0 port 22.
+Oct 26 08:14:27 server01 cron[1102]: (CRON) INFO (Running @reboot jobs)
+Oct 26 08:15:01 server01 CRON[1234]: (root) CMD (/usr/lib/mysql/mysql-systemd-start post)
+Oct 26 08:15:05 server01 kernel: [  245.223344] CPU0: temperature above threshold, cpu clock throttled
+Oct 26 08:15:06 server01 kernel: [  246.223344] CPU0: temperature/speed normal
+Oct 26 08:16:01 server01 mysqld[1456]: 2024-10-26  8:16:01 0 [Note] /usr/sbin/mysqld: ready for connections.
+Oct 26 08:17:32 server01 sudo[1789]: user1 : TTY=pts/0 ; PWD=/home/user1 ; USER=root ; COMMAND=/bin/systemctl status nginx
+Oct 26 08:18:01 server01 kernel: [  458.334455] Out of memory: Kill process 2345 (firefox) score 234 or sacrifice child
+Oct 26 08:18:02 server01 kernel: [  459.334456] Killed process 2345 (firefox) total-vm:2345678kB, anon-rss:123456kB
+Oct 26 08:20:15 server01 puppet-agent[1567]: (/Stage[main]/Mysql::Server/Service[mysqld]) Ensuring => running
+Oct 26 08:22:31 server01 fail2ban[823]: WARNING [sshd] Ban 192.168.1.100
+Oct 26 08:25:44 server01 httpd[2789]: [error] [client 192.168.1.50] File does not exist: /var/www/html/favicon.ico
+Oct 26 08:30:01 server01 CRON[3012]: (root) CMD (/usr/local/bin/backup.sh)
