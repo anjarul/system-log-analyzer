@@ -1,6 +1,6 @@
-Oct 26 08:14:22 server01 systemd[1]: Started System Logging Service.
-Oct 26 08:14:23 server01 NetworkManager[892]: <info>  [1698315263.4521] NetworkManager (version 1.40.0) is starting...
-Oct 26 08:14:23 server01 NetworkManager[892]: <info>  [1698315263.4522] Read config: /etc/NetworkManager/NetworkManager.conf
+Oct 25 08:14:24 server01 systemd[1]: Started System Logging Service sys sys.
+Oct 26 08:14:24 server01 NetworkManager[892]: <info>  [1698315263.4521] NetworkManager (version 1.40.0) is starting...
+Oct 26 08:14:24 server01 NetworkManager[892]: <info>  [1698315263.4522] Read config: /etc/NetworkManager/NetworkManager.conf
 Oct 26 08:14:24 server01 dhclient[934]: DHCPREQUEST on eth0 to 192.168.1.1 port 67
 Oct 26 08:14:24 server01 dhclient[934]: DHCPACK from 192.168.1.1
 Oct 26 08:14:24 server01 NetworkManager[892]: <info>  [1698315264.2234] device (eth0): state change: ip-config -> ip-check (reason 'none', sys-iface-state: 'managed')

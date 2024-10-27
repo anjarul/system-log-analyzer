@@ -21,8 +21,10 @@ object JsonSupport extends SprayJsonSupport with DefaultJsonProtocol {
   }
 
   // Define implicit formats for request and response models
+  implicit val highlightTextFormat: RootJsonFormat[HighlightText] = jsonFormat2(HighlightText)
+
   implicit val logRequestFormat: RootJsonFormat[LogRequest] = jsonFormat3(LogRequest)
-  implicit val logEntryFormat: RootJsonFormat[LogEntry] = jsonFormat2(LogEntry)
+  implicit val logEntryFormat: RootJsonFormat[LogEntry] = jsonFormat3(LogEntry)
   implicit val logResponseFormat: RootJsonFormat[LogResponse] = jsonFormat4(LogResponse)
   implicit val histogramEntryFormat: RootJsonFormat[HistogramEntry] = jsonFormat2(HistogramEntry)
   implicit val histogramResponseFormat: RootJsonFormat[HistogramResponse] = jsonFormat4(HistogramResponse)
