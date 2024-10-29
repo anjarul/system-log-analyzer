@@ -1,25 +1,18 @@
 package com.loganalyzer.services
 
-
 import com.loganalyzer.configurations.AppConfig
 import com.loganalyzer.models.LogModels.*
 import com.loganalyzer.utils.DateTimeUtils
 
 import java.nio.file.{Files, Paths}
-import java.util.regex.Pattern
 import scala.io.Source
+import scala.util.Using
 
 class LogAnalyzerService {
   def getLogFileSize: Long = Files.size(Paths.get(AppConfig.logFilePath))
 
   def analyzeLogs(request: LogRequest): LogResponse = {
-    val logs = Source.fromFile(AppConfig.logFilePath).getLines().toList
-    val filteredLogs = logs.filter { line =>
-      val datetime = DateTimeUtils.extractDateTime(line)
-      datetime.isAfter(request.datetimeFrom) &&
-        datetime.isBefore(request.datetimeUntil) &&
-        line.contains(request.phrase)
-    }
+    val filteredLogs = filterLogs(request)
 
     val data = filteredLogs.map { line =>
       val datetime = DateTimeUtils.extractDateTime(line)
@@ -33,13 +26,7 @@ class LogAnalyzerService {
   }
 
   def generateHistogram(request: LogRequest): HistogramResponse = {
-    val logs = Source.fromFile(AppConfig.logFilePath).getLines().toList
-    val filteredLogs = logs.filter { line =>
-      val datetime = DateTimeUtils.extractDateTime(line)
-      datetime.isAfter(request.datetimeFrom) &&
-        datetime.isBefore(request.datetimeUntil) &&
-        line.contains(request.phrase)
-    }
+    val filteredLogs = filterLogs(request)
 
     val histogramData = filteredLogs.groupBy(line => DateTimeUtils.extractDateTime(line).toLocalDate)
       .map { case (date, entries) => HistogramEntry(date.toString, entries.size) }
@@ -61,5 +48,16 @@ class LogAnalyzerService {
   private def extractMessage(line: String): String = {
     val parts = line.split("\\s+", 5)
     if (parts.length >= 5) parts(4) else ""
+  }
+
+  private def filterLogs(request: LogRequest): List[String] = {
+    Using(Source.fromFile(AppConfig.logFilePath)) { source =>
+      source.getLines().toList.filter { line =>
+        val datetime = DateTimeUtils.extractDateTime(line)
+        datetime.isAfter(request.datetimeFrom) &&
+          datetime.isBefore(request.datetimeUntil) &&
+          line.contains(request.phrase)
+      }
+    }.getOrElse(Nil)
   }
 }

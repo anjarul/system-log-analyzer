@@ -8,7 +8,6 @@ import LogModels._
 
 object JsonFormats extends SprayJsonSupport with DefaultJsonProtocol {
 
-  // Custom JSON format for LocalDateTime
   implicit object LocalDateTimeFormat extends RootJsonFormat[LocalDateTime] {
     private val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm")
 
@@ -20,7 +19,6 @@ object JsonFormats extends SprayJsonSupport with DefaultJsonProtocol {
     }
   }
 
-  // Define implicit formats for request and response models
   implicit val highlightTextFormat: RootJsonFormat[HighlightText] = jsonFormat2(HighlightText)
 
   implicit val logRequestFormat: RootJsonFormat[LogRequest] = jsonFormat3(LogRequest)

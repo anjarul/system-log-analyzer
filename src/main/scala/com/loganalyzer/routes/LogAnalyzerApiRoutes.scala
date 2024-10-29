@@ -9,7 +9,7 @@ import com.loganalyzer.utils.CORSHandler
 import com.loganalyzer.models.JsonFormats.*
 import com.loganalyzer.models.LogModels.LogRequest
 
-class ApiRoutes extends CORSHandler {
+class LogAnalyzerApiRoutes extends CORSHandler {
   private val service = new LogAnalyzerService()
   private val controller = new LogAnalyzerController(service)
 

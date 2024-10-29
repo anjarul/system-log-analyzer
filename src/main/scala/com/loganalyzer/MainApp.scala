@@ -4,7 +4,7 @@ import akka.actor.typed.ActorSystem
 import akka.actor.typed.scaladsl.Behaviors
 import akka.http.scaladsl.Http
 import com.loganalyzer.configurations.AppConfig
-import com.loganalyzer.routes.ApiRoutes
+import com.loganalyzer.routes.LogAnalyzerApiRoutes
 
 import scala.concurrent.ExecutionContextExecutor
 import scala.util.{Failure, Success}
@@ -14,7 +14,7 @@ object MainApp extends App {
   implicit val system: ActorSystem[Nothing] = ActorSystem(Behaviors.empty, "LogAnalyzerSystem")
   implicit val executionContext: ExecutionContextExecutor = system.executionContext
 
-  val routes = new ApiRoutes()
+  val routes = new LogAnalyzerApiRoutes()
 
   val bindingFuture = Http().newServerAt(AppConfig.host, AppConfig.port)
     .bind(routes.route)
