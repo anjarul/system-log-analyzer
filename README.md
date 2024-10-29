@@ -11,6 +11,12 @@ Make sure you have the following tools installed:
 * SBT
 * Git
 
+# Configuration
+The application reads configuration values from the application.conf file located in the
+`src/main/resources/application.conf`
+Make sure to update the **logFilePath** value to point to the correct log file on your system.
+
+
 # Setup and Installation
 1. Clone the repository:
    * git clone git@github.com:anjarul/system-log-analyzer.git
@@ -18,9 +24,7 @@ Make sure you have the following tools installed:
 
 2. Install dependencies:
    * sbt update
-
-
-# Configuration
-The application reads configuration values from the application.conf file located in the 
-`src/main/resources/application.conf`
-Make sure to update the **logFilePath** value to point to the correct log file on your system.
+3. Compile the project:
+   * sbt compile
+4. Run the project:
+   * sbt run
