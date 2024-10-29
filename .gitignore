@@ -1,2 +1,42 @@
-.idea
-target
+# General OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+logs/
+*.log
+*.out
+
+# Build output
+/target/
+/project/target/
+/project/project/
+
+# IDE and editor specific files
+.idea/
+.vscode/
+*.iml
+
+# SBT specific files
+/metals/
+.bloop/
+.cache/
+.scala_dependencies
+.sbt/modules/
+.sbt/
+lib_managed/
+src_managed/
+*.class
+
+# Akka and streams specific
+akka-http-*.log
+
+# Temporary files
+*.tmp
+*.swp
+*.bak
+*.swo
+
+# Application configurations (if needed for security)
+*.conf.local
+.env
